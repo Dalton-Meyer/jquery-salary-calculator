@@ -19,6 +19,21 @@ function addInput() {
         let iD = Number($('#idNumber').val());
         let title = $('#jobTitle').val();
         let salary = Number($('#annualSalary').val());
+        if (fName === "") {
+            alert('Please enter employee first name')
+            return;
+        };if (lName === "") {
+            alert('Please enter employee last name')
+            return;
+        };if (iD === 0){
+            alert('Please enter employee ID number')
+            return;
+        };if (title === "") {
+            alert('Please enter employee title')
+            return;
+        };if (salary === 0) {
+            alert('Please enter employee salary')
+        };
         $('tbody').append('<tr><td>'+fName+'</td><td>'+lName+'</td><td>'+iD+'</td><td>'+title+'</td><td>'+salary+'</td><td><button class="deleteRow">Delete</button></td></tr>');
         monthlyTotal(); // displays the updated monthly total before the value gets emptied
         $('#firstName').val('');
@@ -33,7 +48,7 @@ function monthlyTotal() {
     newTotal = Number($('#annualSalary').val()) / 12; // divides by 12 to get the monthly salary
     total += newTotal // add it to the total variable
     $('#tCounter').empty(); // emptys the display
-    $('#tCounter').append(Math.round(total)); // pushes updated total to the display
+    $('#tCounter').append(total.toFixed(2)); // pushes updated total to the display
     if (total >= 20000) {
         $('h3').css('background-color', 'red'); // turns red once the monthly expenses
     }  
